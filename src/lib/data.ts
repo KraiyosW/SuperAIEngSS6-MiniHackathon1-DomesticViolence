@@ -134,7 +134,7 @@ export function getProvinceStats() {
   });
   const total = incidentsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, nameEng: provinceThaiToEng[name] || name, count, pct: Math.round((count / total) * 100) }))
+    .map(([name, count]) => ({ name, nameEng: provinceThaiToEng[name] || name, count, pct: Number(((count / total) * 100).toFixed(1)) }))
     .sort((a, b) => b.count - a.count);
 }
 
@@ -145,7 +145,7 @@ export function getRegionStats() {
   });
   const total = incidentsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, count, pct: Math.round((count / total) * 100) }))
+    .map(([name, count]) => ({ name, count, pct: Number(((count / total) * 100).toFixed(1)) }))
     .sort((a, b) => b.count - a.count);
 }
 
@@ -157,7 +157,7 @@ export function getGenderStats() {
   });
   const total = victimsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, count, pct: Math.round((count / total) * 100) }))
+    .map(([name, count]) => ({ name, count, pct: Number(((count / total) * 100).toFixed(1)) }))
     .sort((a, b) => b.count - a.count);
 }
 
@@ -181,7 +181,7 @@ export function getAgeRangeStats(mode: "victim" | "offender" = "victim") {
       name,
       shortName: name.replace(/วัย/, "").split(" ")[0],
       count,
-      pct: Math.round((count / total) * 100),
+      pct: Number(((count / total) * 100).toFixed(1)),
     };
   });
 }
@@ -198,7 +198,7 @@ export function getFactorStats() {
       key,
       name: FACTOR_LABELS[key],
       count,
-      pct: Math.round((count / totalIncidents) * 100),
+      pct: Number(((count / totalIncidents) * 100).toFixed(1)),
     };
   }).sort((a, b) => b.count - a.count);
 }
@@ -241,7 +241,7 @@ export function getSourceStats() {
   });
   const total = incidentsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, count, pct: Math.round((count / total) * 100) }))
+    .map(([name, count]) => ({ name, count, pct: Number(((count / total) * 100).toFixed(1)) }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 7); // Show top 7 sources
 }
@@ -256,7 +256,7 @@ export function getRelationshipStats() {
   });
   const total = victimsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, count, pct: Math.round((count / total) * 100) }))
+    .map(([name, count]) => ({ name, count, pct: Number(((count / total) * 100).toFixed(1)) }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 7); // Show top 7 relationships
 }
