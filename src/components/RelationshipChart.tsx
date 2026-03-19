@@ -1,6 +1,6 @@
 "use client";
 
-import { getProvinceStats } from "@/lib/data";
+import { getRelationshipStats } from "@/lib/data";
 import {
   BarChart,
   Bar,
@@ -9,18 +9,21 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Cell,
 } from "recharts";
 
-export function ProvinceChart() {
-  const stats = getProvinceStats().slice(0, 15);
+const COLORS = ["#312e81", "#3730a3", "#4338ca", "#4f46e5", "#6366f1", "#818cf8", "#a5b4fc"];
+
+export function RelationshipChart() {
+  const stats = getRelationshipStats();
 
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-5">
       <h3 className="text-base font-bold text-slate-900 mb-1">
-        Top 15 จังหวัดที่พบเหตุการณ์มากสุด
+        ความสัมพันธ์ระหว่างผู้กระทำกับเหยื่อ
       </h3>
-      <p className="text-sm text-slate-600 mb-4">แสดงจำนวนเคสในแต่ละจังหวัด</p>
-      <div className="h-[500px]">
+      <p className="text-sm text-slate-600 mb-4">รูปแบบความสัมพันธ์ที่พบเหตุการณ์มากที่สุด</p>
+      <div className="h-[260px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={stats}
@@ -42,7 +45,7 @@ export function ProvinceChart() {
               type="category"
               dataKey="name"
               tick={{ fill: "#475569", fontSize: 13 }}
-              width={130}
+              width={140}
               axisLine={false}
               tickLine={false}
             />
@@ -61,12 +64,11 @@ export function ProvinceChart() {
                 "จำนวน",
               ]}
             />
-            <Bar
-              dataKey="count"
-              fill="#4f46e5"
-              radius={[0, 6, 6, 0]}
-              barSize={18}
-            />
+            <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={22}>
+              {stats.map((_, index) => (
+                <Cell key={index} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>

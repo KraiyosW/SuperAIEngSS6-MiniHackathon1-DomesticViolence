@@ -2,9 +2,13 @@ import rawIncidents from "@/databases/incidents.json";
 import rawOffenders from "@/databases/offenders.json";
 import rawVictims from "@/databases/victims.json";
 
-export const incidentsData = rawIncidents as any[];
-export const offendersData = rawOffenders as any[];
-export const victimsData = rawVictims as any[];
+export interface IncidentRecord {
+  [key: string]: string | number;
+}
+
+export const incidentsData = rawIncidents as IncidentRecord[];
+export const offendersData = rawOffenders as IncidentRecord[];
+export const victimsData = rawVictims as IncidentRecord[];
 
 // Export data as incidentsData for backwards compatibility where length is needed (e.g. 877 total cases)
 export const data = incidentsData; 
@@ -128,8 +132,9 @@ export function getProvinceStats() {
   incidentsData.forEach((d) => {
     counts[d.Province] = (counts[d.Province] || 0) + 1;
   });
+  const total = incidentsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, nameEng: provinceThaiToEng[name] || name, count }))
+    .map(([name, count]) => ({ name, nameEng: provinceThaiToEng[name] || name, count, pct: Math.round((count / total) * 100) }))
     .sort((a, b) => b.count - a.count);
 }
 
@@ -138,8 +143,9 @@ export function getRegionStats() {
   incidentsData.forEach((d) => {
     counts[d.Regional] = (counts[d.Regional] || 0) + 1;
   });
+  const total = incidentsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, count }))
+    .map(([name, count]) => ({ name, count, pct: Math.round((count / total) * 100) }))
     .sort((a, b) => b.count - a.count);
 }
 
@@ -149,8 +155,9 @@ export function getGenderStats() {
   victimsData.forEach((d) => {
     if (d.Gender) counts[d.Gender] = (counts[d.Gender] || 0) + 1;
   });
+  const total = victimsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, count }))
+    .map(([name, count]) => ({ name, count, pct: Math.round((count / total) * 100) }))
     .sort((a, b) => b.count - a.count);
 }
 
@@ -167,11 +174,16 @@ export function getAgeRangeStats(mode: "victim" | "offender" = "victim") {
   dataset.forEach((d) => {
     if (d["Age Range"]) counts[d["Age Range"]] = (counts[d["Age Range"]] || 0) + 1;
   });
-  return order.map((name) => ({
-    name,
-    shortName: name.replace(/วัย/, "").split(" ")[0],
-    count: counts[name] || 0,
-  }));
+  const total = dataset.length || 1;
+  return order.map((name) => {
+    const count = counts[name] || 0;
+    return {
+      name,
+      shortName: name.replace(/วัย/, "").split(" ")[0],
+      count,
+      pct: Math.round((count / total) * 100),
+    };
+  });
 }
 
 export function getFactorStats() {
@@ -227,8 +239,24 @@ export function getSourceStats() {
       counts[source] = (counts[source] || 0) + 1;
     }
   });
+  const total = incidentsData.length || 1;
   return Object.entries(counts)
-    .map(([name, count]) => ({ name, count }))
+    .map(([name, count]) => ({ name, count, pct: Math.round((count / total) * 100) }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 7); // Show top 7 sources
+}
+
+export function getRelationshipStats() {
+  const counts: Record<string, number> = {};
+  victimsData.forEach((d) => {
+    const rel = d["Relation Type"];
+    if (rel) {
+      counts[rel] = (counts[rel] || 0) + 1;
+    }
+  });
+  const total = victimsData.length || 1;
+  return Object.entries(counts)
+    .map(([name, count]) => ({ name, count, pct: Math.round((count / total) * 100) }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 7); // Show top 7 relationships
 }

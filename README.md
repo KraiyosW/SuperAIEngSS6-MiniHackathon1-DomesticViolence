@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Domestic Violence Analytics Dashboard (THackle)
 
-## Getting Started
+A modern, responsive web application for exploring and analyzing domestic violence incidents in Thailand. Built as part of the **Super AI Engineer Season 6 (Mini-Hackathon 1)**.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, React 19)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Data Visualization**: [Recharts](https://recharts.org/)
+- **GIS / Mapping**: [react-simple-maps](https://www.react-simple-maps.io/) (with topojson-client)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Language**: TypeScript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📊 Dashboard Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **KPI Summary**: Quick overview of total incidents, key demographics, and main contributing factors.
+- **Geospatial Heatmap (GIS)**: Interactive map of Thailand displaying case density by province with tooltips highlighting top factors.
+- **Factors Chart**: Ranking of primary catalysts for domestic violence (e.g., Drugs, Alcohol, Rage).
+- **Demographics**: Breakdown of victims and offenders by age range and gender.
+- **Relationships**: Insights into the dynamics between the offender and the victim (e.g., Husband, Child).
+- **Reporting Sources**: Data on where the incidents are typically reported (e.g., Hotline 1300, hospitals, police stations).
+- **Executive Summary**: A deep-dive narrative analysis providing actionable policy recommendations from the data.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📥 Data Sources
 
-## Learn More
+The dashboard processes three main JSON datasets located in `src/databases/`:
+- `incidents.json`
+- `offenders.json`
+- `victims.json`
+*(Note: Data is statically imported for the purpose of this hackathon demonstration and statically typed in `src/lib/data.ts`)*.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
+2. **Run the development server**:
+   ```bash
+   pnpm run dev
+   ```
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👨‍💻 Credits
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Super AI Engineer season 6**
+- **Participant ID**: `603081_Kraiyos Wanna`
+- **Event**: Mini-Hackathon 1 Theme: Data ชุดข้อมูลเหตุความรุนแรงในครอบครัว
+- **Organization**: AIAT (สมาคมปัญญาประดิษฐ์แห่งประเทศไทย)

@@ -4,7 +4,7 @@ import { Lightbulb } from "lucide-react";
 
 export function KeyInsights() {
   return (
-    <div className="rounded-xl border border-indigo-100 bg-indigo-50/50 p-4 shadow-sm mb-4">
+    <div className="rounded-xl border border-indigo-100 bg-indigo-50/50 p-4 mb-4">
       <div className="flex items-start gap-3">
         <div className="p-2bg-indigo-100 text-indigo-600 rounded-lg shrink-0 mt-0.5">
           <Lightbulb className="w-5 h-5 text-indigo-600" />

@@ -12,13 +12,13 @@ import {
   Cell,
 } from "recharts";
 
-const COLORS = ["#10b981", "#059669", "#047857", "#065f46", "#8b5cf6", "#7c3aed", "#6d28d9"];
+const COLORS = ["#312e81", "#3730a3", "#4338ca", "#4f46e5", "#6366f1", "#818cf8", "#a5b4fc"];
 
 export function SourceChart() {
   const stats = getSourceStats();
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5">
       <h3 className="text-base font-bold text-slate-900 mb-1">
         แหล่งที่ได้รับแจ้งเหตุ
       </h3>
@@ -58,7 +58,11 @@ export function SourceChart() {
                 fontSize: "12px",
                 boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
               }}
-              formatter={(value: any) => [`${value} เคส`, "จำนวน"]}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              formatter={(value: any, _name: any, item: any) => [
+                `${value} เคส (${item?.payload?.pct ?? 0}%)`,
+                "จำนวน",
+              ]}
             />
             <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={22}>
               {stats.map((_, index) => (

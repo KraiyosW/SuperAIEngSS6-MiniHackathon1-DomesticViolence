@@ -36,7 +36,7 @@ export function KpiCards() {
       iconBg: "bg-rose-500/20",
     },
     {
-      title: "สัดส่วนเพศ",
+      title: "สัดส่วนผู้ถูกกระทำ (เพศ)",
       value: `${maleCount} : ${femaleCount}`,
       subtitle: `ชาย ${Math.round((maleCount / totalGender) * 100)}% / หญิง ${Math.round((femaleCount / totalGender) * 100)}%`,
       icon: Users,
@@ -50,7 +50,7 @@ export function KpiCards() {
       {cards.map((card) => (
         <div
           key={card.title}
-          className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-200/50 group"
+          className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 transition-all duration-300 group"
         >
           {/* Gradient accent line */}
           <div

@@ -12,13 +12,13 @@ import {
   Cell,
 } from "recharts";
 
-const COLORS = ["#2563eb", "#f97316"];
+const COLORS = ["#475569", "#64748b"];
 
 export function RegionalChart() {
   const stats = getRegionStats();
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5">
       <h3 className="text-base font-bold text-slate-900 mb-1">
         เปรียบเทียบตามภูมิภาค
       </h3>
@@ -55,7 +55,10 @@ export function RegionalChart() {
                 boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
               }}
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              formatter={(value: any) => [`${value} เคส`, "จำนวน"]}
+              formatter={(value: any, _name: any, item: any) => [
+                `${value} เคส (${item?.payload?.pct ?? 0}%)`,
+                "จำนวน",
+              ]}
             />
             <Bar dataKey="count" radius={[6, 6, 0, 0]} barSize={60}>
               {stats.map((_, index) => (

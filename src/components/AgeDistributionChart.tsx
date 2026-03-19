@@ -13,14 +13,14 @@ import {
   Cell,
 } from "recharts";
 
-const COLORS = ["#6366f1", "#3b82f6", "#2563eb", "#1d4ed8", "#1e40af"];
+const COLORS = ["#0f766e", "#0e7490", "#0369a1", "#1d4ed8", "#4338ca"];
 
 export function AgeDistributionChart() {
   const [mode, setMode] = useState<"victim" | "offender">("victim");
   const stats = getAgeRangeStats(mode);
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5">
       <div className="flex justify-between items-start mb-4">
         <div>
           <h3 className="text-base font-bold text-slate-900 mb-1">
@@ -87,7 +87,10 @@ export function AgeDistributionChart() {
                 boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
               }}
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              formatter={(value: any) => [`${value} เคส`, "จำนวน"]}
+              formatter={(value: any, _name: any, item: any) => [
+                `${value} เคส (${item?.payload?.pct ?? 0}%)`,
+                "จำนวน",
+              ]}
             />
             <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={24}>
               {stats.map((_, index) => (

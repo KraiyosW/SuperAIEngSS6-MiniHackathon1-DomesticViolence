@@ -13,15 +13,15 @@ import {
 } from "recharts";
 
 const GRADIENT_COLORS = [
-  "#ef4444", "#f97316", "#f59e0b", "#eab308", "#84cc16",
-  "#22c55e", "#14b8a6", "#06b6d4", "#3b82f6", "#6366f1",
+  "#1e3a8a", "#1e40af", "#1d4ed8", "#2563eb", "#3b82f6",
+  "#60a5fa", "#93c5fd", "#0284c7", "#0369a1", "#075985",
 ];
 
 export function FactorsChart() {
   const stats = getFactorStats();
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5">
       <h3 className="text-base font-bold text-slate-900 mb-1">
         ปัจจัยที่เกี่ยวข้อง
       </h3>

@@ -11,17 +11,16 @@ import {
 } from "recharts";
 
 const COLORS: Record<string, string> = {
-  ชาย: "#3b82f6",
-  หญิง: "#ec4899",
-  ไม่ระบุเพศ: "#6b7280",
+  ชาย: "#4f46e5",
+  หญิง: "#e11d48",
+  ไม่ระบุเพศ: "#64748b",
 };
 
 export function GenderChart() {
   const stats = getGenderStats();
-  const total = stats.reduce((sum, s) => sum + s.count, 0);
-
+  
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-5">
       <h3 className="text-base font-bold text-slate-900 mb-1">
         สัดส่วนของเหยื่อแยกตามเพศ
       </h3>
@@ -57,8 +56,8 @@ export function GenderChart() {
                 boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
               }}
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              formatter={(value: any) => [
-                `${value} เคส (${Math.round((Number(value) / total) * 100)}%)`,
+              formatter={(value: any, _name: any, item: any) => [
+                `${value} เคส (${item?.payload?.pct ?? 0}%)`,
                 "จำนวน",
               ]}
             />
