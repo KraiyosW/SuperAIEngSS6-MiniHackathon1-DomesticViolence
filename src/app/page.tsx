@@ -29,8 +29,11 @@ export default function Home() {
             Super AI Engineer season 6 | 603081_Kraiyos Wanna
           </p>
           <p className="text-xs">
-            Mini-Hackathon 1 Theme: Data ชุดข้อมูลเหตุความรุนแรงในครอบครัว<br/>
+            Mini-Hackathon 1 Theme: Data ชุดข้อมูลเหตุความรุนแรงในครอบครัว
+            <br />
             AIAT : สมาคมปัญญาประดิษฐ์แห่งประเทศไทย
+            <br />
+            Thackle : Big Data Institute
           </p>
         </div>
       </footer>

@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ระบบวิเคราะห์ข้อมูลความรุนแรงในครอบครัว | Dashboard",
-  description: "Domestic Violence Analytics Dashboard — วิเคราะห์ข้อมูลเหตุการณ์ความรุนแรงในครอบครัว ระดับจังหวัด ภูมิภาค และปัจจัยที่เกี่ยวข้อง",
+  title: "ข้อมูลความรุนแรงในครอบครัว | Dashboard",
+  description:
+    "Domestic Violence Analytics Dashboard — วิเคราะห์ข้อมูลเหตุการณ์ความรุนแรงในครอบครัว ระดับจังหวัด ภูมิภาค และปัจจัยที่เกี่ยวข้อง",
 };
 
 export default function RootLayout({
@@ -28,7 +29,14 @@ export default function RootLayout({
   return (
     <html
       lang="th"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        inter.variable,
+      )}
     >
       <body className="min-h-full flex flex-col bg-slate-50">{children}</body>
     </html>
