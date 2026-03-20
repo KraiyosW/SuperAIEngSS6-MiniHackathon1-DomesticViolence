@@ -50,7 +50,7 @@ export function KpiCards() {
       {cards.map((card) => (
         <div
           key={card.title}
-          className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 transition-all duration-300 group"
+          className="relative overflow-hidden rounded-xl border border-slate-800/60 bg-slate-900/50 backdrop-blur-sm p-5 transition-all duration-500 group hover:border-slate-700 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10"
         >
           {/* Gradient accent line */}
           <div
@@ -58,16 +58,16 @@ export function KpiCards() {
           />
           <div className="flex items-start justify-between">
             <div className="space-y-1">
-              <p className="text-sm font-semibold text-slate-600 uppercase tracking-wider">
+              <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
                 {card.title}
               </p>
-              <p className="text-2xl font-bold text-slate-900">{card.value}</p>
-              <p className="text-sm text-slate-600">{card.subtitle}</p>
+              <p className="text-2xl font-bold text-white">{card.value}</p>
+              <p className="text-sm text-slate-400">{card.subtitle}</p>
             </div>
             <div
-              className={`${card.iconBg} rounded-lg p-2.5 transition-transform group-hover:scale-110`}
+              className={`rounded-lg p-2.5 transition-transform group-hover:scale-110 bg-gradient-to-br ${card.color} shadow-lg`}
             >
-              <card.icon className="h-5 w-5 text-slate-700" />
+              <card.icon className="h-5 w-5 text-white" />
             </div>
           </div>
         </div>

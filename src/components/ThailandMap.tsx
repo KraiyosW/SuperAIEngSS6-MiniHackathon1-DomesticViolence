@@ -16,14 +16,14 @@ import {
 const GEO_URL = "/thailand-provinces.json";
 
 function getColor(count: number, maxCount: number): string {
-  if (count === 0) return "#f8fafc"; // Light mode empty state
+  if (count === 0) return "#1e293b"; // slate-800
   const intensity = Math.min(count / maxCount, 1);
-  // Red gradient for light mode: low intensity = light red, high = dark red
-  if (intensity < 0.1) return "#fee2e2"; // red-100
-  if (intensity < 0.3) return "#fca5a5"; // red-300
-  if (intensity < 0.5) return "#ef4444"; // red-500
-  if (intensity < 0.75) return "#b91c1c"; // red-700
-  return "#7f1d1d"; // red-900
+  // Red gradient for dark mode: low intensity = dark red, high = bright red-pink
+  if (intensity < 0.1) return "#4c0519"; // rose-950
+  if (intensity < 0.3) return "#881337"; // rose-900
+  if (intensity < 0.5) return "#be123c"; // rose-700
+  if (intensity < 0.75) return "#e11d48"; // rose-600
+  return "#fb7185"; // rose-400
 }
 
 interface TooltipData {
@@ -62,26 +62,26 @@ export function ThailandMap() {
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 relative group overflow-hidden">
-      <h3 className="text-base font-bold text-slate-900 mb-1">
+    <div className="rounded-xl border border-slate-800/60 bg-slate-900/50 backdrop-blur-sm p-5 relative group overflow-hidden">
+      <h3 className="text-base font-bold text-slate-200 mb-1">
         🗺️ แผนที่ความรุนแรงในครอบครัว — ระดับจังหวัด
       </h3>
-      <p className="text-sm text-slate-600 mb-3">
+      <p className="text-sm text-slate-400 mb-3">
         Choropleth Heatmap แสดงจำนวนเคสในแต่ละจังหวัด
         (เลื่อนเมาส์เพื่อดูรายละเอียด)
       </p>
 
       {/* Legend */}
-      <div className="flex items-center gap-2 mb-3 text-xs text-slate-600 font-medium">
+      <div className="flex items-center gap-2 mb-3 text-xs text-slate-400 font-medium">
         <span>น้อย</span>
-        <div className="flex h-3 rounded overflow-hidden border border-slate-200">
+        <div className="flex h-3 rounded overflow-hidden border border-slate-700">
           {[
-            "#f8fafc",
-            "#fee2e2",
-            "#fca5a5",
-            "#ef4444",
-            "#b91c1c",
-            "#7f1d1d",
+            "#1e293b",
+            "#4c0519",
+            "#881337",
+            "#be123c",
+            "#e11d48",
+            "#fb7185",
           ].map((c) => (
             <div key={c} className="w-6 h-full" style={{ background: c }} />
           ))}
@@ -93,13 +93,13 @@ export function ThailandMap() {
         <div className="absolute top-4 right-4 flex flex-col gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
           <button
             onClick={handleZoomIn}
-            className="w-8 h-8 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-lg shadow-sm"
+            className="w-8 h-8 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-slate-400 hover:bg-slate-700 hover:text-slate-200 text-lg shadow-sm"
           >
             +
           </button>
           <button
             onClick={handleZoomOut}
-            className="w-8 h-8 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:text-slate-900 text-lg shadow-sm"
+            className="w-8 h-8 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-slate-400 hover:bg-slate-700 hover:text-slate-200 text-lg shadow-sm"
           >
             −
           </button>
@@ -131,13 +131,13 @@ export function ThailandMap() {
                       key={geo.rsmKey}
                       geography={geo}
                       fill={color}
-                      stroke="#cbd5e1"
+                      stroke="#334155"
                       strokeWidth={0.5}
                       style={{
                         default: { outline: "none" },
                         hover: {
                           outline: "none",
-                          fill: "#f97316",
+                          fill: "#f43f5e",
                           stroke: "#94a3b8",
                           strokeWidth: 1,
                           cursor: "pointer",
@@ -173,25 +173,25 @@ export function ThailandMap() {
         {/* Tooltip */}
         {tooltip && (
           <div
-            className="fixed z-[100] pointer-events-none px-3 py-2 rounded-lg bg-white border border-slate-200 shadow-xl text-xs text-slate-800 min-w-[160px]"
+            className="fixed z-[100] pointer-events-none px-3 py-2 rounded-lg bg-slate-800/95 border border-slate-700 shadow-xl text-xs text-slate-200 min-w-[160px] backdrop-blur-md"
             style={{
               left: tooltip.x + 12,
               top: tooltip.y - 60,
             }}
           >
-            <p className="font-bold text-sm text-slate-900">
+            <p className="font-bold text-sm text-slate-100">
               {tooltip.nameThai}
             </p>
-            <p className="text-slate-500 text-[10px] mb-1">{tooltip.name}</p>
+            <p className="text-slate-400 text-[10px] mb-1">{tooltip.name}</p>
             <div className="flex justify-between gap-4">
-              <span className="text-slate-500">จำนวนเคส</span>
-              <span className="font-semibold text-blue-600">
+              <span className="text-slate-400">จำนวนเคส</span>
+              <span className="font-semibold text-blue-400">
                 {tooltip.count}
               </span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="text-slate-500">ปัจจัยหลัก</span>
-              <span className="font-semibold text-amber-600">
+              <span className="text-slate-400">ปัจจัยหลัก</span>
+              <span className="font-semibold text-amber-400">
                 {tooltip.topFactor}
               </span>
             </div>

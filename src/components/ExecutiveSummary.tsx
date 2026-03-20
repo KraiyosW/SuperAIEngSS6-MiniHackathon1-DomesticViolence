@@ -7,28 +7,25 @@ export function ExecutiveSummary() {
   const [activeTab, setActiveTab] = useState<"insights" | "policy">("insights");
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 mt-8 text-slate-800 overflow-hidden shadow-sm">
+    <div className="bg-slate-900/80 rounded-xl border border-slate-800 mt-8 text-slate-300 overflow-hidden shadow-lg backdrop-blur-sm">
       {/* Header Section */}
-      <div className="p-6 md:p-8 border-b border-slate-200 bg-slate-50">
-        <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4">
+      <div className="p-6 md:p-8 border-b border-slate-800 bg-slate-800/30">
+        <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
           6️⃣ 🏆 Grand Finale: บทสรุปภาพรวมและข้อเสนอแนะเชิงนโยบาย
         </h2>
-        <p className="text-sm md:text-base leading-relaxed mb-6">
-          จากการวิเคราะห์ข้อมูลเหตุความรุนแรงในครอบครัวแบบเจาะลึก (Deep-Dive Analysis) ครอบคลุมทั้งมิติของผู้กระทำ, เหยื่อ, พื้นที่, เวลา, ปัจจัยกระตุ้น และช่องทางการแจ้งเหตุ ทีมงานสามารถสกัดข้อเท็จจริงที่สะท้อนถึงแก่นแท้ของปัญหาได้ดังนี้:
-        </p>
-        <blockquote className="border-l-4 border-rose-500 pl-4 py-2 italic bg-white text-slate-700 shadow-sm rounded-r-lg">
-          <strong>&quot;ความรุนแรงในครอบครัว ไม่ใช่เพียงปัญหาการกระทบกระทั่งทั่วไป แต่เป็นผลลัพธ์ของโครงสร้างความเครียดในวัยทำงาน ที่ถูกจุดชนวนด้วยสารเสพติดและแอลกอฮอล์ จนนำไปสู่การระบายอารมณ์ในพื้นที่ที่ควรจะปลอดภัยที่สุดอย่าง &apos;บ้าน&apos; ในยามวิกาล... และที่เลวร้ายที่สุดคือ ระบบปัจจุบันทำได้เพียงรอให้เหยื่อเลือดตกยางออก จึงจะมองเห็นปัญหา&quot;</strong>
+        <blockquote className="border-l-4 border-rose-500 pl-4 py-3 italic bg-slate-900/50 text-rose-100/90 shadow-sm rounded-r-lg">
+          <strong>&quot;ความรุนแรงในครอบครัว ไม่ใช่เพียงปัญหาการกระทบกระทั่งทั่วไป แต่เป็นอาชญากรรมเชิงโครงสร้างที่ถูกจุดชนวนด้วยสารเสพติดและแอลกอฮอล์ โดยมี &apos;มายาคติทางสังคม&apos; เป็นกำแพงคุ้มครองผู้กระทำผิด... ถึงเวลาที่รัฐและสังคมต้องเลิกมองว่าเรื่องในบ้านคือเรื่องส่วนตัว เพราะความเงียบในวันนี้ อาจหมายถึงความสูญเสียในวันหน้า&quot;</strong>
         </blockquote>
       </div>
 
       {/* Tabs Navigation */}
-      <div className="flex border-b border-slate-200 px-6 md:px-8 pt-4">
+      <div className="flex border-b border-slate-800 px-6 md:px-8 pt-4">
         <button
           onClick={() => setActiveTab("insights")}
           className={`flex items-center gap-2 pb-4 px-4 text-sm font-bold border-b-2 transition-colors ${
             activeTab === "insights"
-              ? "border-indigo-600 text-indigo-700"
-              : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
+              ? "border-indigo-500 text-indigo-400"
+              : "border-transparent text-slate-500 hover:text-slate-300 hover:border-slate-600"
           }`}
         >
           <Lightbulb className="w-4 h-4" />
@@ -38,71 +35,68 @@ export function ExecutiveSummary() {
           onClick={() => setActiveTab("policy")}
           className={`flex items-center gap-2 pb-4 px-4 text-sm font-bold border-b-2 transition-colors ${
             activeTab === "policy"
-              ? "border-rose-600 text-rose-700"
-              : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
+              ? "border-rose-500 text-rose-400"
+              : "border-transparent text-slate-500 hover:text-slate-300 hover:border-slate-600"
           }`}
         >
           <Target className="w-4 h-4" />
-          ส่วนที่ 2: ข้อเสนอแนะเชิงนโยบาย (Policy)
+          ส่วนที่ 2: 5 นโยบายเร่งด่วน (Actionable Policy)
         </button>
       </div>
 
       {/* Tab Content */}
-      <div className="p-6 md:p-8 bg-slate-100/50">
+      <div className="p-6 md:p-8 bg-slate-950/30">
         {activeTab === "insights" && (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <div className="bg-amber-50 border border-amber-200 text-amber-800 rounded-lg p-4 text-sm">
-              <em>⚠️ <strong>ข้อสังเกตสำคัญ (Data Limitation):</strong> สถิติ 877 เคสนี้เป็นเพียง &quot;ยอดภูเขาน้ำแข็ง&quot; ในความเป็นจริงยังมีเหยื่ออีกจำนวนมหาศาลที่ต้องเผชิญกับ &quot;ตัวเลขที่ซ่อนเร้น (The Dark Figure of Crime)&quot; เนื่องจากถูกกรอบสังคมกดทับและไม่กล้าแจ้งเหตุ</em>
+            <div className="bg-amber-950/30 border border-amber-900/50 text-amber-300/90 rounded-lg p-4 text-sm">
+              <em>⚠️ <strong>ข้อสังเกตสำคัญ (Data Limitation):</strong> สถิติ 877 เคสนี้เป็นเพียง &quot;ยอดภูเขาน้ำแข็ง&quot; (The Dark Figure of Crime) เนื่องจากสังคมไทยยังถูกพันธนาการด้วยมายาคติ <strong>&quot;เรื่องของผัวเมียคนนอกไม่ควรเสือก&quot;</strong> ทำให้เหยื่อถูกทิ้งให้อยู่กับผู้กระทำเพียงลำพัง</em>
             </div>
 
-            <p className="font-semibold text-slate-700 mb-4">เพื่อความเข้าใจที่ตรงจุด เราสามารถเจาะลึกภาพใหญ่ของปัญหาออกเป็น 4 มิติหลัก:</p>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-5 hover:border-slate-600 transition-colors">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg"><Users className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">1. ใครเสี่ยงที่สุด?</h3>
+                  <div className="p-2 bg-indigo-900/50 text-indigo-400 rounded-lg"><Users className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">1. ใครเสี่ยงที่สุด?</h3>
                 </div>
-                <p className="text-sm font-semibold text-indigo-700 mb-3">&quot;วัยกลางคนคือจุดเดือด และคนใกล้ตัวคือผู้ทำร้าย&quot;</p>
-                <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                  <li><strong>สลับขั้วตามเพศสภาพ:</strong> ปัญหาไม่ได้กระจุกตัวที่เด็กหรือผู้สูงอายุ แต่เป็น &quot;วัยทำงาน (36-59 ปี)&quot; โดย <strong>เพศชาย</strong> มีสถิติเป็นผู้ระบายอารมณ์สูงสุด (239 เคส) ในขณะที่ <strong>เพศหญิง</strong> ตกเป็นผู้รองรับอารมณ์</li>
-                  <li><strong>Family Dynamics ที่บิดเบี้ยว:</strong> ผู้ก่อเหตุอันดับ 1 คือ <strong>&quot;คู่ชีวิต / สามี&quot; (168 เคส)</strong> และอันดับ 2 คือ <strong>&quot;บุตร&quot;</strong> ซึ่งสะท้อนปัญหาลูกทำร้ายพ่อแม่ตัวเอง</li>
+                <p className="text-sm font-semibold text-indigo-400 mb-3">&quot;โครงสร้างอำนาจที่บิดเบี้ยวภายในบ้าน&quot;</p>
+                <ul className="list-disc pl-5 text-sm text-slate-400 space-y-2">
+                  <li><strong>ผู้กระทำหลัก:</strong> <strong>เพศชายวัยทำงาน (36-59 ปี)</strong> คือกลุ่มที่ใช้ความรุนแรงสูงสุด (239 เคส)</li>
+                  <li><strong>เหยื่อที่ถูกปิดปาก:</strong> <strong className="text-slate-300">เพศหญิงในวัยทำงาน</strong> คือกลุ่มรับผลกระทบหลัก โดยผู้ก่อเหตุอันดับ 1 คือ <strong>&quot;คู่ชีวิต / สามี&quot;</strong> ยิ่งตอกย้ำว่ามายาคติเรื่องครอบครัวทำให้เหยื่อไม่กล้าส่งเสียงขอความช่วยเหลือ</li>
                 </ul>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-5 hover:border-slate-600 transition-colors">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg"><MapPin className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">2. เหตุเกิดที่ไหนและเมื่อไหร่?</h3>
+                  <div className="p-2 bg-emerald-900/50 text-emerald-400 rounded-lg"><MapPin className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">2. เหตุเกิดที่ไหนและเมื่อไหร่?</h3>
                 </div>
-                <p className="text-sm font-semibold text-emerald-700 mb-3">สลายมายาคติ &quot;บ้านคือพื้นที่ปลอดภัย&quot;</p>
-                <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                  <li><strong>ศูนย์กลางปัญหา:</strong> กรุงเทพมหานคร ครองอันดับ 1 ซึ่งสอดคล้องกับความหนาแน่นและชุมชนแออัด</li>
-                  <li><strong>เวลาจุดเดือด:</strong> สถิติพุ่งสูงสุดช่วง 18:01 - 00:00 น. ซึ่งเกิดใน <strong>&quot;สถานที่ส่วนบุคคล (บ้าน)&quot;</strong> เป็นอันดับ 1 สะท้อนให้เห็นว่าเวลาที่ควรพักผ่อนพร้อมหน้า กลับกลายเป็นเวลาที่เปราะบางที่สุด</li>
+                <p className="text-sm font-semibold text-emerald-400 mb-3">เมื่อบ้านไม่ใช่ &quot;เซฟโซน&quot;</p>
+                <ul className="list-disc pl-5 text-sm text-slate-400 space-y-2">
+                  <li><strong>จุดเกิดเหตุ:</strong> <strong>&quot;สถานที่ส่วนบุคคล (บ้าน)&quot;</strong> คือพื้นที่อันตรายอันดับ 1 ซึ่งสอดคล้องกับมายาคติที่สังคมมักเกรงใจไม่กล้าเข้าไปแทรกแซงพื้นที่ส่วนตัว</li>
+                  <li><strong>เวลาจุดเดือด:</strong> พุ่งสูงช่วง <strong>&quot;บ่าย&quot; (ต่างจังหวัด)</strong> และช่วง <strong>&quot;ค่ำ&quot; (กทม.)</strong> ตามบริบทวิถีชีวิต</li>
                 </ul>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-5 hover:border-slate-600 transition-colors">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-rose-100 text-rose-600 rounded-lg"><AlertTriangle className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">3. อะไรคือสัญญาณเตือน?</h3>
+                  <div className="p-2 bg-rose-900/50 text-rose-400 rounded-lg"><AlertTriangle className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">3. อะไรคือสัญญาณเตือน?</h3>
                 </div>
-                <p className="text-sm font-semibold text-rose-700 mb-3">&quot;สารเสพติด&quot; คือตัวจุดชนวนหายนะ</p>
-                <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                  <li><strong>ตัวเร่งปฏิกิริยา:</strong> อันดับ 1 และ 2 คือ <strong>ยาเสพติด (Drug) และ สุรา (Alcohol)</strong> ซึ่งเข้าไปทำลายสติสัมปชัญญะและสารเคมีในสมอง</li>
-                  <li><strong>ผลลัพธ์ที่ตามมา:</strong> นำไปสู่อันดับ 3 <strong>อารมณ์ฉุนเฉียว (Rage)</strong> และอันดับ 4 <strong>การใช้อำนาจครอบงำ (Authoritative)</strong></li>
+                <p className="text-sm font-semibold text-rose-400 mb-3">&quot;สารเสพติด&quot; และ &quot;อำนาจนิยม&quot;</p>
+                <ul className="list-disc pl-5 text-sm text-slate-400 space-y-2">
+                  <li><strong>ตัวจุดระเบิด:</strong> <strong className="text-slate-300">ยาเสพติดและสุรา</strong> เข้าไปทำลายฟังก์ชันสมองและสติสัมปชัญญะ ปลดล็อกพฤติกรรม <strong>&quot;บันดาลโทสะ (Rage)&quot;</strong> และการอ้าง <strong>&quot;อำนาจปกครอง (Authoritative)&quot;</strong> เพื่อกดขี่คนในบ้าน</li>
                 </ul>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-5 hover:border-slate-600 transition-colors">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 bg-slate-100 text-slate-600 rounded-lg"><ShieldAlert className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">4. ใครคือผู้ส่งเสียงขอความช่วยเหลือ?</h3>
+                  <div className="p-2 bg-slate-700/50 text-slate-400 rounded-lg"><ShieldAlert className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">4. ใครคือผู้ส่งเสียง?</h3>
                 </div>
-                <p className="text-sm font-semibold text-slate-700 mb-3">&quot;ความเงียบของเหยื่อ และช่องโหว่ของระบบ&quot;</p>
-                <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                  <li><strong>เหยื่อถูกปิดปากด้วยความกลัว:</strong> สถิติชี้ชัดว่าเหยื่อส่วนใหญ่ไม่ได้เดินเข้ามาขอความช่วยเหลือด้วยตัวเอง (แจ้งเองเพียง 14.5%)</li>
-                  <li><strong>รัฐทำงานเชิงรับ:</strong> ข้อมูลมักหลั่งไหลมาจาก <strong>&quot;สถานีตำรวจ และ โรงพยาบาล&quot;</strong> สะท้อนว่าเหตุการณ์ต้องรุนแรงจนบาดเจ็บสาหัส ระบบถึงจะมองเห็นเหยื่อ หรือต้องรอให้บุคคลที่สาม (พลเมืองดี) โทรแจ้งผ่านสายด่วน 1300</li>
+                <p className="text-sm font-semibold text-slate-400 mb-3">&quot;สถิติสะท้อนความกลัว&quot;</p>
+                <ul className="list-disc pl-5 text-sm text-slate-400 space-y-2">
+                  <li><strong>ช่องว่างของการแจ้งเหตุ:</strong> เหยื่อแจ้งเหตุเองเพียง <strong>14.5%</strong> เพราะถูกกรอบสังคมตราหน้าว่าการแจ้งความคือการ &quot;ประจานครอบครัว&quot;</li>
+                  <li><strong>การพึ่งพามือที่สาม:</strong> ข้อมูลส่วนใหญ่มาจาก <strong>ตำรวจ, โรงพยาบาล และสายด่วน 1300</strong> ซึ่งมักเกิดขึ้นเมื่อเหตุการณ์บานปลายจนบาดเจ็บสาหัสแล้วเท่านั้น</li>
                 </ul>
               </div>
             </div>
@@ -111,55 +105,71 @@ export function ExecutiveSummary() {
 
         {activeTab === "policy" && (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <p className="font-semibold text-slate-700 mb-4">
-              จาก Insight ทางสถิติ ผนวกกับข้อเท็จจริงของช่องโหว่ในระบบสังคม ทีมงานขอเสนอ <strong>5 นโยบายเร่งด่วน</strong> เพื่อรื้อระบบและแก้ปัญหาที่รากเหง้าอย่างเด็ดขาด ดังนี้:
-            </p>
-
             <div className="space-y-4">
-              <div className="bg-white border-l-4 border-rose-500 rounded-r-xl p-5 shadow-sm">
+              <div className="bg-slate-800/40 border-l-4 border-rose-500 rounded-r-xl p-5">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="bg-rose-50 p-1.5 rounded-md text-rose-600"><Ban className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">นโยบายที่ 1: &quot;Zero Tolerance & No Mediation&quot;</h3>
+                  <div className="bg-rose-950/50 p-1.5 rounded-md text-rose-400"><Ban className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">นโยบายที่ 1: &quot;Zero Tolerance & Anti-Myth Campaign&quot;</h3>
                 </div>
-                <p className="text-sm font-semibold text-rose-600 mb-2 pl-[42px]">(รื้อค่านิยมสังคม เลิกวาทกรรมเรื่องในบ้าน)</p>
-                <p className="text-sm text-slate-600 pl-[42px]"><strong>แนวทางปฏิบัติ:</strong> ภาครัฐต้องเปลี่ยนทัศนคติของเจ้าหน้าที่ผู้บังคับใช้กฎหมายให้มองว่านี่คือ &quot;คดีอาชญากรรม&quot; และต้อง <strong>ออกกฎเหล็กห้ามเจ้าหน้าที่ไกล่เกลี่ยให้ยอมความกันเองเด็ดขาด</strong> พร้อมทั้งรณรงค์ระดับชาติเพื่อลบล้างค่านิยม &quot;เรื่องผัวเมียไม่ควรยุ่ง&quot;</p>
+                <p className="text-sm font-semibold text-rose-400 mb-2 pl-[42px]">(ทลายมายาคติ &apos;เรื่องส่วนตัว&apos;)</p>
+                <p className="text-sm text-slate-400 pl-[42px]"><strong>Action:</strong> ภาครัฐต้องประกาศสงครามกับมายาคติ <strong>&quot;เรื่องครอบครัวคนนอกไม่ควรยุ่ง&quot;</strong> โดยเฉพาะในกลุ่มเจ้าหน้าที่รัฐ (ตำรวจ/นักสังคมสงเคราะห์) <strong>ห้ามใช้ทัศนคติส่วนตัวมาตัดสินให้เหยื่อไกล่เกลี่ยหรือยอมความ</strong> และต้องรณรงค์ให้สังคมมองว่าการแจ้งเหตุคือ &quot;การช่วยชีวิต&quot; ไม่ใช่ &quot;การจุ้นจ้าน&quot; โดยรัฐต้องการันตีความปลอดภัยให้พลเมืองดีเป็นลำดับแรก</p>
               </div>
 
-              <div className="bg-white border-l-4 border-amber-500 rounded-r-xl p-5 shadow-sm">
+              <div className="bg-slate-800/40 border-l-4 border-amber-500 rounded-r-xl p-5">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="bg-amber-50 p-1.5 rounded-md text-amber-600"><Pill className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">นโยบายที่ 2: &quot;Cut the Triggers&quot;</h3>
+                  <div className="bg-amber-950/50 p-1.5 rounded-md text-amber-400"><Pill className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">นโยบายที่ 2: &quot;Targeted Suppression & Alcohol Ban&quot;</h3>
                 </div>
-                <p className="text-sm font-semibold text-amber-600 mb-2 pl-[42px]">(ตัดวงจรยาเสพติดและคุมเข้มสุราเชิงรุก)</p>
-                <p className="text-sm text-slate-600 pl-[42px]"><strong>แนวทางปฏิบัติ:</strong> รัฐต้องกวาดล้างยาเสพติดในชุมชนแออัด/พื้นที่ Hotspot อย่างจริงจัง ควบคุมการเข้าถึงแอลกอฮอล์ในกลุ่มเปราะบาง และดึงผู้เสพเข้าสู่ &quot;ระบบบำบัดทางสาธารณสุข&quot; ตั้งแต่เนิ่นๆ ก่อนที่สารเคมีในสมองจะถูกทำลายจนนำไปสู่การก่อเหตุรุนแรงในบ้าน</p>
+                <p className="text-sm font-semibold text-amber-400 mb-2 pl-[42px]">(ตัดวงจรสารเสพติดและแบนผู้กระทำผิด)</p>
+                <div className="text-sm text-slate-400 pl-[42px] space-y-2">
+                  <p><strong>Action:</strong></p>
+                  <ul className="list-disc pl-5">
+                    <li><strong>บังคับบำบัด:</strong> หากพบว่าความรุนแรงเกิดจากยาเสพติด/แอลกอฮอร์ ต้องแยกผู้กระทำออกมาเข้าศูนย์บำบัดและปรับทัศนคติทันที (Involuntary Treatment) เพื่อคุ้มครองคนในครอบครัวที่ยังอยู่ในบ้าน</li>
+                    <li><strong>Blacklist สุรา:</strong> เสนอมาตรการ <strong>&quot;ห้ามจำหน่ายแอลกอฮอล์แก่บุคคลที่มีประวัติคดีความรุนแรงในครอบครัว&quot;</strong> (โดยใช้ระบบเลขบัตรประชาชนเชื่อมโยงร้านค้า) เพื่อลดโอกาสการกลับไปก่อเหตุซ้ำจากปัจจัยกระตุ้นเดิม</li>
+                  </ul>
+                </div>
               </div>
 
-              <div className="bg-white border-l-4 border-indigo-500 rounded-r-xl p-5 shadow-sm">
+              <div className="bg-slate-800/40 border-l-4 border-indigo-500 rounded-r-xl p-5">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="bg-indigo-50 p-1.5 rounded-md text-indigo-600"><Smartphone className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">นโยบายที่ 3: &quot;Proactive & Anonymous Rescue&quot;</h3>
+                  <div className="bg-indigo-950/50 p-1.5 rounded-md text-indigo-400"><Smartphone className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">นโยบายที่ 3: &quot;Transparent Proactive Rescue&quot;</h3>
                 </div>
-                <p className="text-sm font-semibold text-indigo-600 mb-2 pl-[42px]">(เลิกรอให้เหยื่อโทรมา และสร้างแพลตฟอร์มแจ้งเหตุไร้รอยต่อ)</p>
-                <p className="text-sm text-slate-600 pl-[42px]"><strong>แนวทางปฏิบัติ:</strong> ในเมื่อ Data ชี้ว่าเหยื่อหวาดกลัวจนไม่กล้าแจ้งเหตุเอง รัฐจะทำงานแบบ &quot;นั่งรอรับสาย&quot; ไม่ได้อีกต่อไป! ต้องยกระดับสายด่วน 1300 ให้มีแพลตฟอร์มแจ้งเหตุที่ <strong>&quot;ปกปิดตัวตนคนแจ้ง (Anonymous)&quot;</strong> เพื่อให้เพื่อนบ้านกล้าเป็นหูเป็นตา และมีระบบ <strong>&quot;Live Status Tracking&quot;</strong> ที่แสดงสถานะการเข้าช่วยเหลือแบบ Real-time เพื่อยืนยันว่าเจ้าหน้าที่มีแอคชั่นเชิงรุกทันทีที่ได้รับเบาะแส</p>
+                <p className="text-sm font-semibold text-indigo-400 mb-2 pl-[42px]">(ระบบแจ้งเหตุไร้ตัวตนและติดตามสถานะ)</p>
+                <div className="text-sm text-slate-400 pl-[42px] space-y-2">
+                  <p><strong>Action:</strong> ยกระดับแพลตฟอร์มแจ้งเหตุที่ไม่ใช่แค่การ &quot;รับเรื่อง&quot; แต่ต้องมี <strong>&quot;Live Status Tracking&quot;</strong></p>
+                  <ul className="list-disc pl-5">
+                    <li><strong>สำหรับพลเมืองดี:</strong> ระบบต้องแจ้งเตือนสถานะ (เช่น รับเรื่องแล้ว -&gt; เจ้าหน้าที่ถึงจุดเกิดเหตุ -&gt; เหยื่อถึงพื้นที่ปลอดภัย) เพื่อสร้างความเชื่อมั่นและแรงจูงใจให้คนในสังคมกล้าเป็นหูเป็นตามากขึ้น</li>
+                    <li><strong>สำหรับเหยื่อ:</strong> มีปุ่ม SOS ที่เชื่อมโยงพิกัด GPS ถึงศูนย์ช่วยเหลือที่ใกล้ที่สุดทันที</li>
+                  </ul>
+                </div>
               </div>
 
-              <div className="bg-white border-l-4 border-emerald-500 rounded-r-xl p-5 shadow-sm">
+              <div className="bg-slate-800/40 border-l-4 border-emerald-500 rounded-r-xl p-5">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="bg-emerald-50 p-1.5 rounded-md text-emerald-600"><Scale className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">นโยบายที่ 4: &quot;Absolute Protection & Justice&quot;</h3>
+                  <div className="bg-emerald-950/50 p-1.5 rounded-md text-emerald-400"><Scale className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">นโยบายที่ 4: &quot;Step-by-Step Legal Protection&quot;</h3>
                 </div>
-                <p className="text-sm font-semibold text-emerald-600 mb-2 pl-[42px]">(กฎหมายคุ้มครองและจัดการผู้กระทำผิดเด็ดขาด)</p>
-                <p className="text-sm text-slate-600 pl-[42px]"><strong>แนวทางปฏิบัติ:</strong> หากผู้ก่อเหตุมีปัจจัยกระตุ้นจากสิ่งเสพติด รัฐต้องมีคำสั่งศาล <strong>&quot;บังคับบำบัดและปรับทัศนคติ&quot;</strong> และต้องนำกลไกทางกฎหมายมาใช้อย่างจริงจัง เช่น การทำทัณฑบน และการออก <strong>&quot;คำสั่งศาลห้ามเข้าใกล้เหยื่อ (Restraining Order)&quot;</strong> เพื่อการันตีความปลอดภัยในชีวิตของเหยื่อ</p>
+                <p className="text-sm font-semibold text-emerald-400 mb-2 pl-[42px]">(มาตรการทางกฎหมายแบบเป็นขั้นเป็นตอน)</p>
+                <p className="text-sm text-slate-400 pl-[42px]"><strong>Action:</strong> ในเมื่อคำสั่งศาลทันทีอาจทำได้ยากในทางปฏิบัติ รัฐต้องใช้ <strong>&quot;มาตรการคุ้มครองชั่วคราวโดยพนักงานเจ้าหน้าที่&quot;</strong> (Administrative Protection) ที่มีอำนาจสั่งแยกผู้กระทำออกจากบ้านได้ใน 24 ชม. แรก ก่อนจะส่งเรื่องให้ศาลพิจารณาออกคำสั่งคุ้มครองระยะยาว (Restraining Order) ในขั้นถัดไป เพื่อให้การช่วยเหลือรวดเร็วและเป็นไปได้จริงในทางกฎหมาย</p>
               </div>
 
-              <div className="bg-white border-l-4 border-blue-500 rounded-r-xl p-5 shadow-sm">
+              <div className="bg-slate-800/40 border-l-4 border-blue-500 rounded-r-xl p-5">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="bg-blue-50 p-1.5 rounded-md text-blue-600"><HomeIcon className="w-5 h-5" /></div>
-                  <h3 className="font-bold text-slate-900">นโยบายที่ 5: &quot;Emergency Safe Haven&quot;</h3>
+                  <div className="bg-blue-950/50 p-1.5 rounded-md text-blue-400"><HomeIcon className="w-5 h-5" /></div>
+                  <h3 className="font-bold text-white">นโยบายที่ 5: &quot;Community Safe Haven & Public-Private Partnership&quot;</h3>
                 </div>
-                <p className="text-sm font-semibold text-blue-600 mb-2 pl-[42px]">(พื้นที่หลบภัยและการันตีชีวิตเหยื่อ)</p>
-                <p className="text-sm text-slate-600 pl-[42px]"><strong>แนวทางปฏิบัติ:</strong> รัฐต้องยอมรับความจริงว่า &quot;การผลักเหยื่อกลับเข้าสู่สภาพแวดล้อมเดิม อาจหมายถึงการปล่อยให้เหยื่อเผชิญกับอันตรายถึงชีวิต&quot; จึงต้องจัดตั้ง <strong>&quot;พื้นที่หลบภัยฉุกเฉิน (Safe House)&quot;</strong> ที่เข้าถึงง่ายในระดับชุมชน โดยเฉพาะในช่วงเวลาวิกฤต <strong>(18:00 - 00:00 น.)</strong> เพื่อให้สตรี ผู้สูงอายุ หรือเด็ก มีพื้นที่ปลอดภัยทันทีที่มีการแจ้งเหตุ โดยไม่ต้องถูกบังคับให้กลับไปเสี่ยงภัยในบ้าน</p>
+                <p className="text-sm font-semibold text-blue-400 mb-2 pl-[42px]">(พื้นที่หลบภัยอัจฉริยะ)</p>
+                <p className="text-sm text-slate-400 pl-[42px]"><strong>Action:</strong> จัดตั้ง Safe Zone ในชุมชนที่มีงบประมาณสนับสนุนร่วมกันระหว่าง <strong>&quot;ภาครัฐและเอกชน (CSR)&quot;</strong> โดยให้ผู้นำชุมชนหรืออาสาสมัครที่ผ่านการอบรมเป็นผู้ดูแลพื้นที่ เพื่อให้เหยื่อมีที่พักพิงฉุกเฉินใกล้บ้าน ไม่ต้องถูกส่งไปไกลจนขาดการติดต่อกับสังคมปกติ โดยพื้นที่นี้ต้องสแตนด์บายรับเหตุได้ทั้งช่วง <strong>บ่าย (ตจว.) และ ค่ำ (กทม.)</strong> ตามสถิติที่พบจริง</p>
               </div>
+            </div>
+
+            <div className="mt-8 bg-slate-950 border border-slate-800 border-l-4 border-l-rose-500 text-slate-300 rounded-xl p-6 md:p-8 shadow-lg">
+              <h3 className="text-lg font-bold mb-4 text-white">🏁 บทสรุปส่งท้าย: &quot;เพราะความรุนแรงไม่ใช่เรื่องส่วนตัว&quot;</h3>
+              <blockquote className="border-l-4 border-slate-700 pl-4 py-2 italic text-slate-400">
+                <p className="mb-2">&quot;ข้อมูลสถิติ 877 เคสนี้ ไม่ใช่แค่ตัวเลขบนกราฟ แต่มันคือ <strong>&apos;เสียงตะโกนที่ไร้เสียง&apos;</strong> ของเหยื่อที่ถูกกักขังอยู่ในบ้าน ข้อมูลพิสูจน์แล้วว่าระบบตั้งรับแบบเดิมล้มเหลว เพราะเรามักจะไปถึงเมื่อสายเกินไป...</p>
+                <p>ข้อเสนอเชิงนโยบายทั้ง 5 ข้อนี้ จึงไม่ใช่แค่การแก้กฎหมาย แต่คือการ <strong>&apos;รื้อถอนวัฒนธรรมความเงียบ&apos;</strong> และสร้างระบบที่โปร่งใสพอที่จะทำให้พลเมืองดีกล้าขัดจังหวะความรุนแรง และทำให้เหยื่อมั่นใจว่ารัฐมีพื้นที่ปลอดภัยรออยู่จริง ไม่ว่าจะเป็นเวลาบ่ายหรือค่ำก็ตาม&quot;</p>
+              </blockquote>
             </div>
           </div>
         )}

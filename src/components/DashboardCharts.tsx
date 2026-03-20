@@ -31,7 +31,7 @@ export function DashboardCharts() {
   return (
     <>
       {/* Map and Province Chart */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-100">
         <div className="lg:col-span-2">
           <ThailandMap />
         </div>
@@ -41,25 +41,25 @@ export function DashboardCharts() {
       </div>
 
       {/* Tall Charts (400px height) */}
-      <div className="grid grid-cols-1 lg:grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
         <FactorsChart />
       </div>
 
       {/* Medium Charts (260px height) */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
         <SourceChart />
         <AgeDistributionChart />
         <RelationshipChart />
       </div>
 
       {/* Short Charts (240px height) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-400">
         <RegionalChart />
         <GenderChart />
       </div>
 
       {/* Time & Location Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
         <div className="lg:col-span-1">
           <PeriodChart />
         </div>
