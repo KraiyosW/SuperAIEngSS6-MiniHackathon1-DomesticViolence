@@ -2,6 +2,8 @@
 
 A modern, responsive web application for exploring and analyzing domestic violence incidents in Thailand. Built as part of the **Super AI Engineer Season 6 (Mini-Hackathon 1)**.
 
+**Colab Notebook: https://colab.research.google.com/drive/1R8l1PaoSa561h-pz6fwPnDU38R4IqLHR?usp=sharing**
+
 ## 🚀 Tech Stack
 
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router, React 19)
